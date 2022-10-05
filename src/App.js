@@ -1,40 +1,53 @@
 import React, { useState } from 'react';
 import './App.module.scss';
+import Price from './components/Price/Price';
+import Select from './components/Select/Select';
 import Suffix from './components/Suffix/Suffix';
 
 function App() {
   const [value, changeValue] = useState({
-    amount: '100',
-    selected: '',
+    amount: '',
+    selected: 'gas',
   });
 
   const handleChange = (e) => {
-    console.log(e.target.name);
     changeValue({
       ...value,
       [e.target.name]: e.target.value,
     });
   };
 
+  const prices = {
+    gas: 7.43,
+    electricity: 2.8,
+    bread: 6,
+  };
+
+  const currencies = {
+    pln: 1,
+    usd: 4.85,
+    eur: 4.81,
+  };
+
+  // console.log(Object.keys(currencies)[0]);
+
+  // amount * price *
+
   return (
     <div>
       <label>
         Choose your product:
         <br />
-        <select name="selected" value={value.selected} onChange={handleChange}>
-          <option value="gas">Gas</option>
-          <option value="electricity">Electricity</option>
-          <option value="bread">Loaf of bread</option>
-        </select>
+        <Select handleChange={handleChange} />
+        <Suffix unit={value.selected} />
         <br />
       </label>
-      <input
-        type="number"
-        name="amount"
-        value={value.amount}
-        onChange={handleChange}
-      />{' '}
-      <Suffix />
+      <Price
+        selected={value.selected}
+        amount={value.amount}
+        prices={prices}
+        ratio={currencies}
+      />
     </div>
   );
 }
