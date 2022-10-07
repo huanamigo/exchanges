@@ -1,3 +1,5 @@
 # Things exchange to different currencies
 
-Work in progress
+State-related currency exchange
+
+_It's not much but it's honest work_

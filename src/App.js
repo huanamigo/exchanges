@@ -29,10 +29,6 @@ function App() {
     eur: 4.81,
   };
 
-  // console.log(Object.keys(currencies)[0]);
-
-  // amount * price *
-
   return (
     <div>
       <label>
